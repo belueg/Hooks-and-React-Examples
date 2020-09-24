@@ -2,11 +2,11 @@ import React, {useContext} from 'react'
 import { myContext } from '../Context'
 
 export default function About() {
-const msg = useContext(myContext)
+  const {value, setValue} = useContext(myContext)
   return (
         <>
           <h1>About</h1>  
-          <h2>{msg}</h2>
+          <h2>{value}</h2>
         </>
     )
 }

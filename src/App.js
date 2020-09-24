@@ -4,6 +4,9 @@ import {myContext} from './Context'
 import Home from './Pages/Home'
 import About from './Pages/About'
 function App() {
+
+  const [value, setValue] = useState("Hello from context")
+  
   return (
     <Router>
       <>
@@ -16,7 +19,7 @@ function App() {
             <Link to="/about/">About</Link></li>
           </ul>
         </nav>
-        <myContext.Provider value="Hello from context ;)">
+        <myContext.Provider value={{value, setValue}}>
         <Route path="/" exact component={Home}/>
         <Route path="/about/" component={About} /> 
         </myContext.Provider>
