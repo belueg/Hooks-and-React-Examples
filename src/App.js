@@ -1,22 +1,28 @@
-import React, {useState, useEffect} from "react";
-import './App.css'
+import React, { useState } from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import {myContext} from './Context'
+import Home from './Pages/Home'
+import About from './Pages/About'
 function App() {
-
-
-  const [count, setCount] = useState(0)
-const [title, setTitle] = useState("React")
-
-  useEffect(() => {
-    console.log("Title changed")
-  
-  }, [title])
-
   return (
-    <div className="App">
-<p onMouseOver={()=> setTitle("User")}>Helloo {title}</p>
-<button onClick={() =>  setCount(count + 1 )}>{count}</button>
-    </div>
-  );
+    <Router>
+      <>
+        <nav>
+          <ul>
+            <li>
+            <Link to="/">Home</Link>
+            </li>
+            <li>
+            <Link to="/about/">About</Link></li>
+          </ul>
+        </nav>
+        <myContext.Provider value="Hello from context ;)">
+        <Route path="/" exact component={Home}/>
+        <Route path="/about/" component={About} /> 
+        </myContext.Provider>
+      </>
+    </Router>
+  )
 }
 
-export default App;
+export default App
